@@ -9,7 +9,7 @@ import java.util.*;
 @Service
 public class GeminiService {
 
-    private final String GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyBmejvc1388rc7ry6YHoT6NiUg8K4Vjk38";
+    private final String GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=AIzaSyBmejvc1388rc7ry6YHoT6NiUg8K4Vjk38";
     
     String context = "We are a software development company that builds customized solutions for insurance providers, focusing on four key domains: "
     		+ "Premium Audit, Survey and Risk Control, Med Connection, and Subrosource. Our clients are insurance companies, and their clients are"
