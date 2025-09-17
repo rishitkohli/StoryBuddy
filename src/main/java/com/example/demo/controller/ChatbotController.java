@@ -32,7 +32,7 @@ import com.example.demo.service.GeminiService;
 
 @RestController
 @RequestMapping("/api/chatbot-3")
-@CrossOrigin(origins = "http://127.0.0.1:5500") 
+//@CrossOrigin(origins = "http://127.0.0.1:5500") 
 public class ChatbotController {
 
     @Autowired
