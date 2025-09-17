@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StoryBuddy 👋</title>
+<link href="style.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="nav">
+<div class="nav-container">
+<a class="nav-logo" href="#" onclick="showPage('home')">
+                StoryBuddy <span class="wave">👋</span>
+</a>
+<div class="nav-links">
+<a class="nav-link active" data-page="home" href="#" onclick="showPage('home')" title="Home">🏡</a>
+<a class="nav-link" data-page="generator" href="#" onclick="showPage('generator')">GeneratorBuddy 👷‍♂️</a>
+<a class="nav-link" data-page="analyzer" href="#" onclick="showPage('analyzer')">AnalyzerBuddy 🕵️‍♂️</a>
+<a class="nav-link" data-page="estimator" href="#" onclick="showPage('estimator')">EstimatorBuddy 📈</a>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="main">
+<!-- Home Page -->
+<div class="page active" id="home">
+<div class="home-header">
+<h1 class="home-title">
+                    Welcome to StoryBuddy <span class="wave">👋</span>
+</h1>
+<p class="home-subtitle">
+                    Your friendly AI companion for Generating, Analyzing, and Estimating JIRA stories with ease
+                </p>
+</div>
+<div class="tool-cards">
+<a class="tool-card" href="#" onclick="showPage('generator')">
+<div class="tool-card-header">
+<div class="tool-icon">👷‍♂️</div>
+<h2 class="tool-title">GeneratorBuddy</h2>
+</div>
+<p class="tool-description">
+                        Transform your requirements and context into well-structured JIRA stories using AI
+                    </p>
+<!--<div class="tool-footer">
+                        Get started
+                        <svg fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>-->
+</a>
+<a class="tool-card" href="#" onclick="showPage('analyzer')">
+<div class="tool-card-header">
+<div class="tool-icon">🕵️‍♂️</div>
+<h2 class="tool-title">AnalyzerBuddy</h2>
+</div>
+<p class="tool-description">
+                        Get role-specific insights and summaries from existing JIRA stories
+                    </p>
+<!--<div class="tool-footer">
+                        Get started
+                        <svg fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>-->
+</a>
+<a class="tool-card" href="#" onclick="showPage('estimator')">
+<div class="tool-card-header">
+<div class="tool-icon">📈</div> <!-- Changed emoji to Chart Increasing -->
+<h2 class="tool-title">EstimatorBuddy</h2>
+</div>
+<p class="tool-description">
+                        Calculate accurate time estimates for different roles based on story complexity
+                    </p>
+<!--<div class="tool-footer">
+                        Get started
+                        <svg fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>-->
+</a>
+</div>
+</div>
+<!-- Generator Page -->
+<div class="page" id="generator">
+<!--<a href="#" class="back-button" onclick="showPage('home')">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+                Back to Home
+            </a>-->
+<div class="page-header">
+<h1 class="page-title">GeneratorBuddy 👷‍♂️</h1>
+<p class="page-subtitle">Transform your requirements into well-structured JIRA stories</p>
+</div>
+<div class="content-wrapper">
+<div class="left-column">
+<div class="form-container">
+<div class="form-group">
+<label class="form-label">Paste your requirements</label>
+<textarea class="form-textarea" id="generatorInput" placeholder="Paste your document content, requirements, or context here..."></textarea>
+</div>
+<div class="form-group">
+<label class="form-label">Or upload a document</label>
+<div class="file-input-container">
+<input accept=".txt" class="file-input" id="generatorFile" onchange="handleFileUpload('generator')" type="file"/>
+<label class="file-input-label" for="generatorFile">
+                                    📄 Choose File
+                                </label>
+</div>
+<div class="file-selected" id="generatorFileSelected" style="display: none;"></div>
+</div>
+<button class="btn" onclick="generateStory()">
+                            🧠 Generate Story
+                        </button>
+</div>
+</div>
+<div class="right-column">
+<div class="output-container" id="generatorOutput">
+<div class="output-header">
+<h3 class="output-title">Generated JIRA Story</h3>
+<div style="display: flex; gap: 0.5rem; margin-left: auto;">
+<button class="btn btn-secondary" onclick="copyToClipboard('generatorResult')" title="Copy to clipboard">
+<span class="emoji">📑</span>
+</button><button class="btn btn-secondary" id="send-to-analyzer" title="Send to AnalyzerBuddy" type="button">
+    <span class="emoji">🕵️‍♂️</span></button>
+<button class="btn btn-secondary" id="send-to-estimator" title="Send to EstimatorBuddy" type="button"><span class="emoji">📈</span></button>
+</div>
+</div>
+<div class="output-content" id="generatorResult"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Analyzer Page -->
+<div class="page" id="analyzer">
+<div class="page-header">
+<h1 class="page-title">AnalyzerBuddy 🕵️‍♂️</h1>
+<p class="page-subtitle">Get role-specific insights from existing JIRA stories</p>
+</div>
+<div class="content-wrapper">
+<div class="left-column">
+<div class="form-container2">
+<div class="form-group">
+<label class="form-label">Paste your JIRA story</label>
+<textarea class="form-textarea" id="analyzerInput" placeholder="Paste your existing JIRA story here..."></textarea>
+</div>
+<div class="form-group">
+<label class="form-label">Or upload a document</label>
+<div class="file-input-container">
+<input accept=".txt" class="file-input" id="analyzerFile" onchange="handleFileUpload('analyzer')" type="file"/>
+<label class="file-input-label" for="analyzerFile">
+                                    📄 Choose File
+                                </label>
+</div>
+<div class="file-selected" id="analyzerFileSelected" style="display: none;"></div>
+</div>
+<div class="form-group2">
+<label class="form-label">Select your role</label>
+<div class="role-cards-container">
+<div class="role-card" data-role="BA" onclick="selectRole(this)">
+<div class="role-card-icon">🎯</div>
+<h3 class="role-card-title">BA</h3>
+</div>
+<div class="role-card" data-role="QA" onclick="selectRole(this)">
+<div class="role-card-icon">🛡️</div>
+<h3 class="role-card-title">QA Engineer</h3>
+</div>
+<div class="role-card" data-role="DEV" onclick="selectRole(this)">
+<div class="role-card-icon">🚀</div>
+<h3 class="role-card-title">Developer</h3>
+</div>
+</div><div class="generate-btn-container" style="display: flex; justify-content: left; gap: 3.75rem; margin-top: 1rem;"><button class="btn" onclick="generateSummary()">🔍 Generate Insights</button>
+    <button class="export-button" id="export-to-excel" style="display: none;">
+<img alt="Excel Icon" class="icon" src="excel-icon.png"/> Export Test Scenarios
+</button></div>
+<input id="selectedRole" name="selectedRole" type="hidden" value=""/>
+</div>
+<div class="generate-btn-container">
+</div>
+<!-- Export to Excel button (initially hidden, shown only for QA role) -->
+</div>
+</div>
+<div class="right-column">
+<div class="output-container2" id="analyzerOutput">
+<div class="output-header">
+<h3 class="output-title">Role-Specific Analysis</h3>
+<div style="display: flex; gap: 0.5rem; margin-left: auto;">
+<button class="btn btn-secondary" onclick="copyToClipboard('analyzerResult')" title="Copy to clipboard">
+                            <span class="emoji">📑</span>
+                           
+                            <button class="btn btn-secondary" id="send-to-estimator2" title="Send to EstimatorBuddy" type="button"><span class="emoji">📈</span></button>
+</button></div>
+</div>
+<div class="output-content" id="analyzerResult"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Estimator Page -->
+<div class="page" id="estimator">
+<div class="page-header">
+<h1 class="page-title">EstimatorBuddy 📈</h1> <!-- Changed emoji to Chart Increasing -->
+<p class="page-subtitle">Calculate accurate time estimates for different roles</p>
+</div>
+<div class="content-wrapper">
+<div class="left-column">
+<div class="form-container">
+<div class="form-group">
+<label class="form-label">Paste your JIRA story</label>
+<textarea class="form-textarea" id="estimatorInput" placeholder="Paste your JIRA story for estimation..."></textarea>
+</div>
+<div class="form-group">
+<label class="form-label">Or upload a document</label>
+<div class="file-input-container">
+<input accept=".txt" class="file-input" id="estimatorFile" onchange="handleFileUpload('estimator')" type="file"/>
+<label class="file-input-label" for="estimatorFile">
+                                    📄 Choose File
+                                </label>
+</div>
+<div class="file-selected" id="estimatorFileSelected" style="display: none;"></div>
+</div>
+<button class="btn" onclick="calculateEstimate()">
+                            ⏱️ Calculate Estimate
+                        </button>
+</div>
+</div>
+<div class="right-column">
+<div class="output-container" id="estimatorOutput">
+<div class="output-header">
+<h3 class="output-title">Time Estimation Breakdown</h3>
+<button class="btn btn-secondary" onclick="copyToClipboard('estimatorResult')" title="Copy to clipboard">
+<span class="emoji">📑</span>
+</button>
+</div>
+<div class="output-content" id="estimatorResult"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script src="script.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const sendButton = document.getElementById("send-to-analyzer");
+    if (sendButton) {
+        sendButton.addEventListener("click", function () {
+            const generatorOutput = document.querySelector("#generator-output .output-content").innerText;
+            const analyzerInput = document.querySelector("#analyzer-input");
+            if (analyzerInput) {
+                analyzerInput.value = generatorOutput;
+                // Optionally switch to AnalyzerBuddy tab
+                const analyzerTab = document.querySelector('[data-target="analyzer"]');
+                if (analyzerTab) analyzerTab.click();
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>

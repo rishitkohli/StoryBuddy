@@ -1,0 +1,26 @@
+# === Maven build ===
+/target/
+*.log
+
+# === Java ===
+*.class
+*.jar
+*.war
+*.ear
+
+# === IntelliJ IDEA ===
+.idea/
+*.iml
+out/
+
+# === VS Code ===
+.vscode/
+
+# === Eclipse ===
+.classpath
+.project
+.settings/
+
+# === OS-specific ===
+Thumbs.db
+.DS_Store

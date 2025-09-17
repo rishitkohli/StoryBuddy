@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>StoryBuddy - Landing Page</title>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #c43e08 0%, #fb4d0a 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+        a.enter-button {
+            background-color: white;
+            color: #fb4d0a;
+            padding: 1rem 2rem;
+            font-size: 1.25rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        a.enter-button:hover {
+            background-color: #f97316;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h1>Welcome to StoryBuddy 👋</h1>
+<p>Your friendly AI companion for Generating, Analyzing, and Estimating JIRA stories with ease.</p>
+<!--<a class="enter-button" href="chatbots.html">Enter</a>-->
+<script>
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        window.location.href = "chatbots.html";
+    }
+});
+</script></body>
+</html>
