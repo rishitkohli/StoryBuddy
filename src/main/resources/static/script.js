@@ -163,7 +163,7 @@ function generateSummary() {
 
     showLoading('analyzerOutput', 'analyzerResult');
 
-    fetch("http://localhost:8080/api/chatbot-3", {
+    fetch("/api/chatbot-3", {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ story: input, domain: role })
