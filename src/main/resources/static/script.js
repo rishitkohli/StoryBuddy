@@ -126,7 +126,7 @@ async function generateStory() {
     }
     showLoading('generatorOutput', 'generatorResult');
     try {
-        const res = await fetch("http://localhost:8080/api/chatbot-3/requirement-to-story", {
+        const res = await fetch("/api/chatbot-3/requirement-to-story", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ requirement: input })
@@ -189,7 +189,7 @@ async function calculateEstimate() {
     }
     showLoading('estimatorOutput', 'estimatorResult');
     try {
-        const res = await fetch("http://localhost:8080/api/chatbot-3/estimate-effort", {
+        const res = await fetch("/api/chatbot-3/estimate-effort", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ story: input })
@@ -284,7 +284,7 @@ function setupExportToExcelButton() {
         }
 
         try {
-            const response = await fetch("http://localhost:8080/api/chatbot-3/export-excel", {
+            const response = await fetch("/api/chatbot-3/export-excel", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ story: input })
